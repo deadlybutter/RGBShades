@@ -62,19 +62,21 @@
 
 
 // list of functions that will be displayed
-functionList effectList[] = {threeSine,
-                             threeDee,
-                             scrollTextZero,
-                             plasma,
-                             confetti,
-                             rider,
-                             scrollTextOne,
-                             glitter,
-                             slantBars,
-                             scrollTextTwo,
-                             colorFill,
-                             sideRain
-                            };
+//functionList effectList[] = {threeSine,
+//                             threeDee,
+//                             scrollTextZero,
+//                             plasma,
+//                             confetti,
+//                             rider,
+//                             scrollTextOne,
+//                             glitter,
+//                             slantBars,
+//                             scrollTextTwo,
+//                             colorFill,
+//                             sideRain
+//                            };
+
+functionList effectList[] = {scrollTextThree};
 
 const byte numEffects = (sizeof(effectList)/sizeof(effectList[0]));
 
