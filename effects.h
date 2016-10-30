@@ -406,7 +406,7 @@ void pingPong() {
     reverseX = 0;
     vx = vx * -1;
 
-    if (random8() > 75){
+    if (random8() > 25){
       vy = random8(-1, 2);  
     }
   }
@@ -415,7 +415,7 @@ void pingPong() {
     reverseY = 0;
     vy = vy * -1;
     
-    if (random8() > 75){
+    if (random8() > 25){
       vx = random8(-1, 2);  
     }
   }
