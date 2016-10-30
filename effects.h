@@ -332,3 +332,109 @@ void scrollTextJoe() {
   scrollText(3, RAINBOW, 0, CRGB::Black);
 }
 
+void pingPong() {
+  // Define location vars & ball velocity
+  static byte p1 = 0;
+  static byte p2 = 0;
+  static byte bx = 0;
+  static byte by = 0;
+  static byte vx = 0;
+  static byte vy = 0;
+
+  // startup tasks
+  // mostly resetting values
+  if (effectInit == false) {
+    effectInit = true;
+    effectDelay = 65;
+    byte halfW = kMatrixWidth / 2;
+    byte halfH = kMatrixHeight / 2;
+    p1 = halfH;
+    p2 = halfH;
+    vx = random8(-1, 2);
+    vy = random8(-1, 2);
+    bx = halfW;
+    by = halfH;
+  }
+
+  // update ball position based on velocity
+  bx += vx;
+  by += vy;
+
+  byte reverseX = 0;
+  byte reverseY = 0;
+
+  // check if ball left X screen
+  if (bx <= 0) {
+    bx = 0;
+    reverseX = 1;
+  }
+  else if (bx >= kMatrixWidth) {
+    bx = kMatrixWidth - 1;
+    reverseX = 1;
+  }
+
+  // check if ball left Y screen
+  if (by <= 0) {
+    by = 0;
+    reverseY = 1;
+  }
+  else if (by >= kMatrixHeight) {
+    by = kMatrixHeight - 1;
+    reverseY = 1;
+  }
+
+  // lets move our paddles to block it
+  p2 += by - p2;
+  p1 += by - p1;
+
+  // There are no pixels outside this range
+  if (p1 < 1) {
+    p1 = 1;
+  }
+  else if (p1 > 3) {
+    p1 = 3;
+  }
+  if (p2 < 1) {
+    p2 = 1;
+  }
+  else if (p2 > 3) {
+    p2 = 3;
+  }
+
+  // If we left the screens we should reset our velocity
+  if (reverseX == 1) {
+    reverseX = 0;
+    vx = vx * -1;
+
+    if (random8() > 75){
+      vy = random8(-1, 2);  
+    }
+  }
+
+  if (reverseY == 1) {
+    reverseY = 0;
+    vy = vy * -1;
+    
+    if (random8() > 75){
+      vx = random8(-1, 2);  
+    }
+  }
+
+  for (byte x = 0; x < kMatrixWidth; x++) {
+    for (byte y = 0; y < kMatrixHeight; y++) {
+      if (x == bx && y == by) {
+        leds[XY(bx, by)] = CHSV(255, 255, 255);
+      }
+      else if (x == 0 && y == p1) {
+        leds[XY(x, y)] = CHSV(255, 255, 255);
+      }
+      else if (x == kMatrixWidth - 1 && y == p2) {
+        leds[XY(x, y)] = CHSV(255, 255, 255);
+      }
+      else {
+        leds[XY(x, y)] = CRGB::Black;
+      }
+    }
+  }
+}
+

@@ -77,8 +77,12 @@
 //                            };
 
 //plasma,rider,slantBars,colorFill,sideRain
+// TODO:
+//  - Use list of effects above
+//  - Ping pong
+//  - Change buttons to trigger my two effects
 
-functionList effectList[] = {scrollTextJoe};
+functionList effectList[] = {scrollTextJoe, pingPong};
 
 const byte numEffects = (sizeof(effectList)/sizeof(effectList[0]));
 
