@@ -328,7 +328,7 @@ void scrollTextTwo() {
   scrollText(2, NORMAL, CRGB::Green, CRGB(0,0,8));
 }
 
-void scrollTextThree() {
+void scrollTextJoe() {
   scrollText(3, RAINBOW, 0, CRGB::Black);
 }
 

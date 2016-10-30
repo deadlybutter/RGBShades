@@ -76,7 +76,9 @@
 //                             sideRain
 //                            };
 
-functionList effectList[] = {scrollTextThree};
+//plasma,rider,slantBars,colorFill,sideRain
+
+functionList effectList[] = {scrollTextJoe};
 
 const byte numEffects = (sizeof(effectList)/sizeof(effectList[0]));
 
